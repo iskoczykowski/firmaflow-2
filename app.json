@@ -1,1 +1,21 @@
+{
+  "expo": {
+    "name": "FirmaFlow 2",
+    "slug": "firmaflow-2",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
 
+    "android": {
+      "package": "com.firmaflow.mobile",
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "BLUETOOTH",
+        "BLUETOOTH_ADMIN",
+        "BLUETOOTH_SCAN",
+        "BLUETOOTH_CONNECT"
+      ]
+    }
+  }
+}
