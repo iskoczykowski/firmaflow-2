@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import CustomersScreen from '../screens/Customers/CustomersScreen';
 import OrdersScreen from '../screens/Orders/OrdersScreen';
+import MeasureScreen from '../screens/Measure/MeasureScreen';
 
 type Screen =
   | 'dashboard'
@@ -41,10 +42,12 @@ export default function AppNavigator() {
           {screen === 'dashboard' && <DashboardScreen />}
           {screen === 'customers' && <CustomersScreen />}
           {screen === 'orders' && <OrdersScreen />}
+          {screen === 'measure' && <MeasureScreen />}
 
           {screen !== 'dashboard' &&
             screen !== 'customers' &&
-            screen !== 'orders' && (
+            screen !== 'orders' &&
+            screen !== 'measure' && (
               <ModulePlaceholder
                 title={menu.find((m) => m.id === screen)?.label || 'Modul'}
                 icon={menu.find((m) => m.id === screen)?.icon || '📦'}
@@ -60,11 +63,7 @@ export default function AppNavigator() {
             paddingVertical: 8,
           }}
         >
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 8 }}
-          >
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 8 }}>
             {menu.map((item) => {
               const active = screen === item.id;
 
