@@ -3,6 +3,7 @@ import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-na
 import { StatusBar } from 'expo-status-bar';
 
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
+import CustomersScreen from '../screens/Customers/CustomersScreen';
 
 type Screen =
   | 'dashboard'
@@ -37,7 +38,9 @@ export default function AppNavigator() {
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           {screen === 'dashboard' && <DashboardScreen />}
-          {screen !== 'dashboard' && (
+          {screen === 'customers' && <CustomersScreen />}
+
+          {screen !== 'dashboard' && screen !== 'customers' && (
             <ModulePlaceholder
               title={menu.find((m) => m.id === screen)?.label || 'Modul'}
               icon={menu.find((m) => m.id === screen)?.icon || '📦'}
