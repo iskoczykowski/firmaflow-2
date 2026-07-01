@@ -7,6 +7,7 @@ import CustomersScreen from '../screens/Customers/CustomersScreen';
 import OrdersScreen from '../screens/Orders/OrdersScreen';
 import MeasureScreen from '../screens/Measure/MeasureScreen';
 import ProductionScreen from '../screens/Production/ProductionScreen';
+import InstallationScreen from '../screens/Installation/InstallationScreen';
 
 type Screen =
   | 'dashboard'
@@ -45,12 +46,14 @@ export default function AppNavigator() {
           {screen === 'orders' && <OrdersScreen />}
           {screen === 'measure' && <MeasureScreen />}
           {screen === 'production' && <ProductionScreen />}
+          {screen === 'installation' && <InstallationScreen />}
 
           {screen !== 'dashboard' &&
             screen !== 'customers' &&
             screen !== 'orders' &&
             screen !== 'measure' &&
-            screen !== 'production' && (
+            screen !== 'production' &&
+            screen !== 'installation' && (
               <ModulePlaceholder
                 title={menu.find((m) => m.id === screen)?.label || 'Modul'}
                 icon={menu.find((m) => m.id === screen)?.icon || '📦'}
