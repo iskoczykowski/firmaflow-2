@@ -8,28 +8,37 @@ import OrdersScreen from '../screens/Orders/OrdersScreen';
 import MeasureScreen from '../screens/Measure/MeasureScreen';
 import ProductionScreen from '../screens/Production/ProductionScreen';
 import InstallationScreen from '../screens/Installation/InstallationScreen';
+import WarehouseScreen from '../screens/Warehouse/WarehouseScreen';
+import CalendarScreen from '../screens/Calendar/CalendarScreen';
+import TimeTrackingScreen from '../screens/TimeTracking/TimeTrackingScreen';
+import SettingsScreen from '../screens/Settings/SettingsScreen';
+import OrderFileScreen from '../screens/OrderFile/OrderFileScreen';
 
 type Screen =
   | 'dashboard'
   | 'customers'
   | 'orders'
+  | 'orderFile'
   | 'measure'
   | 'production'
   | 'installation'
   | 'warehouse'
   | 'calendar'
+  | 'time'
   | 'settings';
 
 const menu: { id: Screen; label: string; icon: string }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: '🏠' },
   { id: 'customers', label: 'Kunden', icon: '👥' },
   { id: 'orders', label: 'Aufträge', icon: '📋' },
+  { id: 'orderFile', label: 'Akte', icon: '📁' },
   { id: 'measure', label: 'Aufmaß', icon: '📐' },
   { id: 'production', label: 'Produktion', icon: '🏭' },
   { id: 'installation', label: 'Montage', icon: '🚚' },
   { id: 'warehouse', label: 'Lager', icon: '📦' },
   { id: 'calendar', label: 'Kalender', icon: '📅' },
-  { id: 'settings', label: 'Einstellungen', icon: '⚙️' },
+  { id: 'time', label: 'Zeit', icon: '⏱️' },
+  { id: 'settings', label: 'Settings', icon: '⚙️' },
 ];
 
 export default function AppNavigator() {
@@ -44,21 +53,14 @@ export default function AppNavigator() {
           {screen === 'dashboard' && <DashboardScreen />}
           {screen === 'customers' && <CustomersScreen />}
           {screen === 'orders' && <OrdersScreen />}
+          {screen === 'orderFile' && <OrderFileScreen />}
           {screen === 'measure' && <MeasureScreen />}
           {screen === 'production' && <ProductionScreen />}
           {screen === 'installation' && <InstallationScreen />}
-
-          {screen !== 'dashboard' &&
-            screen !== 'customers' &&
-            screen !== 'orders' &&
-            screen !== 'measure' &&
-            screen !== 'production' &&
-            screen !== 'installation' && (
-              <ModulePlaceholder
-                title={menu.find((m) => m.id === screen)?.label || 'Modul'}
-                icon={menu.find((m) => m.id === screen)?.icon || '📦'}
-              />
-            )}
+          {screen === 'warehouse' && <WarehouseScreen />}
+          {screen === 'calendar' && <CalendarScreen />}
+          {screen === 'time' && <TimeTrackingScreen />}
+          {screen === 'settings' && <SettingsScreen />}
         </View>
 
         <View
@@ -107,27 +109,5 @@ export default function AppNavigator() {
         </View>
       </View>
     </SafeAreaView>
-  );
-}
-
-function ModulePlaceholder({ title, icon }: { title: string; icon: string }) {
-  return (
-    <ScrollView contentContainerStyle={{ padding: 20 }}>
-      <View
-        style={{
-          backgroundColor: '#0F172A',
-          borderRadius: 26,
-          padding: 24,
-          marginBottom: 20,
-        }}
-      >
-        <Text style={{ color: '#FFFFFF', fontSize: 36, fontWeight: '900' }}>
-          {icon} {title}
-        </Text>
-        <Text style={{ color: '#CBD5E1', fontSize: 16, marginTop: 6 }}>
-          Dieses Modul bauen wir als nächstes aus.
-        </Text>
-      </View>
-    </ScrollView>
   );
 }
