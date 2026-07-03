@@ -1,5 +1,4 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import LanguageSwitcher from './LanguageSwitcher';
 
 type HeaderProps = {
   title: string;
@@ -8,35 +7,18 @@ type HeaderProps = {
 
 export default function Header({ title, subtitle }: HeaderProps) {
   return (
-    <View
-      style={{
-        backgroundColor: '#0F172A',
-        borderRadius: 24,
-        padding: 24,
-        marginBottom: 20,
-      }}
-    >
-      <Text
-        style={{
-          color: '#FFFFFF',
-          fontSize: 34,
-          fontWeight: '900',
-        }}
-      >
-        {title}
-      </Text>
+    <header className="mb-6 rounded-3xl bg-white p-6 shadow-sm">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h1 className="text-4xl font-black text-slate-900">{title}</h1>
 
-      {subtitle ? (
-        <Text
-          style={{
-            color: '#CBD5E1',
-            fontSize: 16,
-            marginTop: 6,
-          }}
-        >
-          {subtitle}
-        </Text>
-      ) : null}
-    </View>
+          {subtitle ? (
+            <p className="mt-2 text-slate-600">{subtitle}</p>
+          ) : null}
+        </div>
+
+        <LanguageSwitcher />
+      </div>
+    </header>
   );
 }
